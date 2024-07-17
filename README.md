@@ -1,91 +1,65 @@
-Tetrahedron Visualization
+Platonic Solids Visualization
 
-This repository contains code to visualize a rotating tetrahedron using Python's matplotlib and scipy.spatial libraries.
-Overview
+This repository contains a Jupyter notebook that generates and visualizes the five Platonic solids: Tetrahedron, Cube (Hexahedron), Octahedron, Dodecahedron, and Icosahedron. The visualizations are provided as static plots and animated GIFs showing rotations of each solid.
+Contents
 
-This project demonstrates how to create a 3D visualization of a tetrahedron and animate its rotation. The code generates a GIF of the rotating tetrahedron.
+    solids.ipynb: Jupyter notebook containing the code to generate and visualize the Platonic solids.
+    tetrahedron_rotation.gif: Animated GIF of the rotating Tetrahedron.
+    cube_rotation.gif: Animated GIF of the rotating Cube (Hexahedron).
+    octahedron_rotation.gif: Animated GIF of the rotating Octahedron.
+    dodecahedron_rotation.gif: Animated GIF of the rotating Dodecahedron.
+    icosahedron_rotation.gif: Animated GIF of the rotating Icosahedron.
+
 Dependencies
 
-Ensure you have the following Python libraries installed:
+To run the notebook, you need the following Python libraries:
 
     numpy
     matplotlib
     scipy
 
-You can install these libraries using pip:
+You can install these dependencies using pip:
 
-sh
+bash
 
 pip install numpy matplotlib scipy
 
-Code Explanation
-
-The script defines the vertices of a tetrahedron, computes its convex hull, and creates an animation of the rotating tetrahedron. The key components of the code are:
-
-    Vertices Definition: Defines the four vertices of the tetrahedron.
-    Convex Hull Calculation: Uses scipy.spatial.ConvexHull to compute the convex hull.
-    Visualization: Uses matplotlib to create a 3D plot and animate the rotation.
-
-python
-
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d.art3d import Poly3DCollection
-from matplotlib.animation import FuncAnimation
-from scipy.spatial import ConvexHull
-
-# Define tetrahedron vertices
-points = np.array([[1, 1, 1], [1, -1, -1], [-1, 1, -1], [-1, -1, 1]])
-
-# Calculate the convex hull
-hull = ConvexHull(points)
-
-# Create a 3D plot
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-
-# Remove axes
-ax.axis('off')
-ax.grid(False)
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_zticks([])
-
-def init():
-    # Add faces
-    faces = Poly3DCollection([hull.points[simplex] for simplex in hull.simplices], alpha=0.5)
-    faces.set_facecolor('c')
-    ax.add_collection3d(faces)
-    
-    # Add edges
-    for simplex in hull.simplices:
-        s = hull.points[simplex]
-        s = np.vstack((s, s[0]))
-        ax.plot(s[:, 0], s[:, 1], s[:, 2], "k-")
-    
-    return faces,
-
-def update(frame):
-    ax.view_init(elev=10, azim=frame)
-    return ax,
-
-# Create and save the animation
-anim = FuncAnimation(fig, update, frames=np.arange(0, 360, 1), init_func=init, blit=False)
-anim.save('tetrahedron_rotation.gif', writer='imagemagick')
-
-Output
-
-The script produces a GIF named tetrahedron_rotation.gif that shows a 360-degree rotation of the tetrahedron.
 Usage
 
-Run the script in a Python environment to generate the rotating tetrahedron GIF:
+    Clone the repository:
 
-sh
+    bash
 
-python tetrahedron_visualization.py
+git clone https://github.com/your-username/platonic-solids-visualization.git
+cd platonic-solids-visualization
 
+Open the Jupyter notebook:
+
+bash
+
+    jupyter notebook Platonic_Solids.ipynb
+
+    Run the notebook to generate the visualizations and save the animated GIFs.
+
+Examples
+Tetrahedron
+
+Tetrahedron
+Cube (Hexahedron)
+
+Cube
+Octahedron
+
+Octahedron
+Dodecahedron
+
+Dodecahedron
+Icosahedron
+
+Icosahedron
 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the LICENSE file for details.
+Acknowledgments
 
-Feel free to modify the content as needed for your specific requirements.
+The convex hull computation is powered by scipy.spatial.ConvexHull. The 3D plotting is done using matplotlib and mpl_toolkits.mplot3d. Animations are created with matplotlib.animation.FuncAnimation.

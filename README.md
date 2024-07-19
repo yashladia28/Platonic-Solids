@@ -42,21 +42,21 @@ bash
     Run the notebook to generate the visualizations and save the animated GIFs.
 
 Examples
-Tetrahedron
 
-Tetrahedron
-Cube (Hexahedron)
-
-Cube
-Octahedron
-
-Octahedron
-Dodecahedron
-
-Dodecahedron
-Icosahedron
-
-Icosahedron
+    Tetrahedron
+        Tetrahedron
+    
+    Cube (Hexahedron)
+        Cube
+    
+    Octahedron
+        Octahedron
+    
+    Dodecahedron
+        Dodecahedron
+    
+    Icosahedron
+        Icosahedron
 
 Acknowledgments
 

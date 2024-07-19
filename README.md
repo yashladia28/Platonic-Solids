@@ -57,9 +57,7 @@ Dodecahedron
 Icosahedron
 
 Icosahedron
-License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
 Acknowledgments
 
 The convex hull computation is powered by scipy.spatial.ConvexHull. The 3D plotting is done using matplotlib and mpl_toolkits.mplot3d. Animations are created with matplotlib.animation.FuncAnimation.
